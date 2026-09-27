@@ -1,0 +1,498 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#f8f5f2">
+  <title>sorry 😭</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      width: 100%;
+      min-height: 100%;
+    }
+
+    body {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 20px;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display",
+        "SF Pro Text", Arial, sans-serif;
+      color: #292625;
+      background: #f8f5f2;
+    }
+
+    /* Background blobs */
+
+    .blob {
+      position: fixed;
+      width: 260px;
+      height: 260px;
+      border-radius: 50%;
+      filter: blur(70px);
+      opacity: .45;
+      pointer-events: none;
+      animation: drift 8s ease-in-out infinite;
+    }
+
+    .blob.one {
+      background: #ffd0d0;
+      top: -120px;
+      left: -100px;
+    }
+
+    .blob.two {
+      background: #ffe2b8;
+      right: -120px;
+      bottom: -120px;
+      animation-delay: -4s;
+    }
+
+    @keyframes drift {
+
+      0%,
+      100% {
+        transform: translate(0, 0);
+      }
+
+      50% {
+        transform: translate(30px, -20px);
+      }
+    }
+
+    /* Floating background emojis */
+
+    .float {
+      position: fixed;
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+      opacity: .35;
+      animation: floatUp linear infinite;
+    }
+
+    .f1 {
+      left: 8%;
+      bottom: -30px;
+      font-size: 24px;
+      animation-duration: 8s;
+    }
+
+    .f2 {
+      left: 82%;
+      bottom: -30px;
+      font-size: 20px;
+      animation-duration: 10s;
+      animation-delay: -3s;
+    }
+
+    .f3 {
+      left: 20%;
+      bottom: -30px;
+      font-size: 16px;
+      animation-duration: 11s;
+      animation-delay: -7s;
+    }
+
+    .f4 {
+      left: 68%;
+      bottom: -30px;
+      font-size: 26px;
+      animation-duration: 9s;
+      animation-delay: -5s;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) rotate(0);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: .35;
+      }
+
+      85% {
+        opacity: .35;
+      }
+
+      100% {
+        transform: translateY(-110vh) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    /* Main card */
+
+    .card {
+      position: relative;
+      z-index: 2;
+      width: min(480px, 100%);
+      padding: 42px 28px 36px;
+      text-align: center;
+      background: rgba(255, 255, 255, .82);
+      border: 1px solid rgba(0, 0, 0, .06);
+      border-radius: 28px;
+      box-shadow:
+        0 25px 70px rgba(0, 0, 0, .08),
+        0 4px 12px rgba(0, 0, 0, .04);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      animation: cardIn .7s cubic-bezier(.2, .8, .2, 1);
+    }
+
+    @keyframes cardIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px) scale(.96);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+    /* The crying emoji */
+
+    .emoji {
+      display: inline-block;
+      font-size: 48px;
+      margin-bottom: 12px;
+      animation: bounce 2.2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+
+      0%,
+      100% {
+        transform: translateY(0) rotate(0);
+      }
+
+      20% {
+        transform: translateY(-8px) rotate(-6deg);
+      }
+
+      40% {
+        transform: translateY(0) rotate(6deg);
+      }
+
+      55% {
+        transform: translateY(-4px) rotate(-3deg);
+      }
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(58px, 16vw, 82px);
+      line-height: .85;
+      letter-spacing: -6px;
+      animation: wiggle 4s ease-in-out infinite;
+    }
+
+    @keyframes wiggle {
+
+      0%,
+      90%,
+      100% {
+        transform: rotate(0);
+      }
+
+      93% {
+        transform: rotate(-2deg);
+      }
+
+      96% {
+        transform: rotate(2deg);
+      }
+    }
+
+    .message {
+      margin: 24px auto 0;
+      max-width: 390px;
+      color: #69625e;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .tagalog {
+      color: #8d6862;
+      font-weight: 600;
+    }
+
+    /* Little status pill */
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      margin-top: 24px;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: #f5f2ef;
+      color: #8a827d;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #e6a1a1;
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      50% {
+        transform: scale(1.5);
+        opacity: .5;
+      }
+    }
+
+    /* Button */
+
+    button {
+      display: block;
+      width: 100%;
+      max-width: 280px;
+      margin: 24px auto 0;
+      padding: 15px 20px;
+      border: 0;
+      border-radius: 14px;
+      background: #292625;
+      color: white;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, .13);
+      transition:
+        transform .15s ease,
+        box-shadow .15s ease;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    button:hover {
+      transform: translateY(-3px) rotate(-1deg);
+      box-shadow: 0 13px 28px rgba(0, 0, 0, .17);
+    }
+
+    button:active {
+      transform: scale(.96);
+    }
+
+    .response {
+      min-height: 21px;
+      margin-top: 17px;
+      color: #936963;
+      font-size: 13px;
+      font-weight: 600;
+      transition: .25s ease;
+    }
+
+    /* Things that fly out when button is pressed */
+
+    .particle {
+      position: fixed;
+      z-index: 20;
+      pointer-events: none;
+      font-size: 20px;
+      animation: particle 1.4s cubic-bezier(.2, .7, .2, 1) forwards;
+    }
+
+    @keyframes particle {
+      0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(.4) rotate(0);
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+        transform:
+          translate(calc(-50% + var(--x)),
+            calc(-50% + var(--y))) scale(1.15) rotate(var(--r));
+      }
+    }
+
+    /* Success state */
+
+    .accepted .emoji {
+      animation: celebration .7s ease;
+    }
+
+    .accepted h1 {
+      animation: accepted .5s ease;
+    }
+
+    @keyframes celebration {
+      25% {
+        transform: scale(1.25) rotate(-10deg);
+      }
+
+      60% {
+        transform: scale(.9) rotate(8deg);
+      }
+
+      100% {
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    @keyframes accepted {
+      50% {
+        transform: scale(1.08);
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 480px) {
+      body {
+        padding: 15px;
+      }
+
+      .card {
+        padding: 38px 22px 32px;
+        border-radius: 24px;
+      }
+
+      .message {
+        font-size: 15px;
+      }
+
+      button {
+        min-height: 50px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="blob one"></div>
+  <div class="blob two"></div>
+
+  <div class="float f1">😭</div>
+  <div class="float f2">♡</div>
+  <div class="float f3">✦</div>
+  <div class="float f4">😭</div>
+
+  <main class="card" id="card">
+
+    <div class="emoji">😭</div>
+
+    <h1>sorry</h1>
+
+    <div class="message">
+      I know you were already stressed and I probably shouldn't
+      have kept pushing your buttons 😭
+      <br><br>
+      Sorry for being annoying.
+      <br>
+      <span class="tagalog">Sorry na 😭</span>
+    </div>
+
+    <div class="status">
+      <span class="dot"></span>
+      currently trying to behave
+    </div>
+
+    <button id="button">
+      forgive me?
+    </button>
+
+    <div class="response" id="response"></div>
+
+  </main>
+
+  <script>
+    const button = document.getElementById("button");
+    const response = document.getElementById("response");
+    const card = document.getElementById("card");
+
+    const responses = [
+      "thank you 😭",
+      "salamat 😭",
+      "I'll behave now",
+      "okay good 😭",
+      "yay",
+      "sorry talaga 😭"
+    ];
+
+    const particles = ["😭", "♡", "✦", "♥", "🥲"];
+
+    button.addEventListener("click", () => {
+      const message =
+        responses[Math.floor(Math.random() * responses.length)];
+
+      response.textContent = message;
+      button.textContent = "thank you 😭";
+      card.classList.add("accepted");
+
+      for (let i = 0; i < 14; i++) {
+        const particle = document.createElement("div");
+
+        particle.className = "particle";
+        particle.textContent =
+          particles[Math.floor(Math.random() * particles.length)];
+
+        particle.style.left = "50%";
+        particle.style.top = "62%";
+
+        particle.style.setProperty(
+          "--x",
+          `${(Math.random() - .5) * 380}px`
+        );
+
+        particle.style.setProperty(
+          "--y",
+          `${-80 - Math.random() * 220}px`
+        );
+
+        particle.style.setProperty(
+          "--r",
+          `${(Math.random() - .5) * 90}deg`
+        );
+
+        particle.style.animationDelay =
+          `${Math.random() * .15}s`;
+
+        document.body.appendChild(particle);
+
+        setTimeout(() => {
+          particle.remove();
+        }, 1800);
+      }
+    });
+  </script>
+
+</body>
+
+</html>
